@@ -2,7 +2,7 @@ import React from 'react'
 import Sidebar from './Sidebar'
 import { Header } from './Header'
 
-export const Dashboard = ({ children }) => {
+export const Dashboard = ({ children, headerHeading, isUploadDropdown }) => {
     return (
         <div>
             <div className='flex '>
@@ -10,7 +10,7 @@ export const Dashboard = ({ children }) => {
                 <Sidebar />
 
                 <div className="flex flex-col flex-1">
-                    <Header />
+                    <Header heading={headerHeading} isUploadDropdown={isUploadDropdown} />
                     {/* content */}
                     {children}
                 </div>

@@ -4,9 +4,12 @@ import './index.css'
 import App from './App'
 
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import { Upload } from './routes/Upload'
 
 const router = createBrowserRouter([
   {path : '/', element : <App />},
+  {path : '/upload', element : <Upload />},
+
 ])
 
 createRoot(document.getElementById('root')).render(
