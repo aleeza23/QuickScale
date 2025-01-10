@@ -5,10 +5,13 @@ import App from './App'
 
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import { Upload } from './routes/Upload'
+import { FileDetails } from './routes/FileDetails'
 
 const router = createBrowserRouter([
   {path : '/', element : <App />},
   {path : '/upload', element : <Upload />},
+  {path : '/file-details', element : <FileDetails />},
+
 
 ])
 

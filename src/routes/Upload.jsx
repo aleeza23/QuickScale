@@ -4,17 +4,20 @@ import { Dashboard } from "../components/Dashboard";
 import { Content } from "../components/Content";
 import uploadIcon from "../assets/images/file upload 03.svg";
 import { EditorPanel } from "../components/EditorPanel";
+import { usePdfFile } from "../hook/usePdfFile";
 
 export const Upload = () => {
-    const [uploadedFile, setUploadedFile] = useState(null); // State to hold the uploaded file
-    const [isExtracting, setIsExtracting] = useState(false); // State to control progress bar visibility
+    const [isExtracting, setIsExtracting] = useState(false); 
     const [progress, setProgress] = useState(0); // Progress percentage
-    const navigate = useNavigate(); // Hook to navigate between pages
+    const navigate = useNavigate(); 
+    const {pdfFile, setFile } = usePdfFile(); // Using the custom hook to set the file
 
     const handleFileUpload = (event) => {
         const file = event.target.files[0];
+       
+        
         if (file) {
-            setUploadedFile(file); // Update state with the uploaded file
+            setFile(file);
         }
     };
 
@@ -28,13 +31,16 @@ export const Upload = () => {
                 if (prevProgress >= 100) {
                     clearInterval(interval);
                     // Redirect to a new page after extraction is complete
-                    setTimeout(() => navigate("/"), 500);
+                    setTimeout(() => navigate("/file-details"), 500);
                     return 100;
                 }
                 return prevProgress + 10;
             });
         }, 500); // Increment progress every 500ms
     };
+
+    console.log(pdfFile);
+    
 
     return (
         <Dashboard headerHeading={"Your Document Model"} isUploadDropdown={true}>
